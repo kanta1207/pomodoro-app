@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { Button } from 'react-native';
+import { Button, Pressable, StyleSheet, View } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 export type TimerControlButtonProps = {
   isTimerRunning: boolean;
@@ -14,6 +15,34 @@ export const TimerControlButton: FC<TimerControlButtonProps> = ({
 }) => {
   const title = isTimerRunning ? 'Stop Timer' : 'Start Timer';
   const onPress = isTimerRunning ? stopTimer : startTimer;
+  const iconName = isTimerRunning ? 'pause' : 'play';
 
-  return <Button title={title} onPress={onPress} />;
+  return (
+    <Pressable onPress={onPress}>
+      <View style={styles.container}>
+        <FontAwesome
+          name={iconName}
+          size={125}
+          color={'#fff'}
+          style={styles.icon}
+        />
+      </View>
+    </Pressable>
+  );
 };
+
+const styles = StyleSheet.create({
+  icon: {
+    // alignSelf: 'center',
+  },
+  container: {
+    borderWidth: 5,
+    width: 250,
+    height: 250,
+    borderRadius: 250 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: '#fff',
+    marginVertical: 50,
+  },
+});

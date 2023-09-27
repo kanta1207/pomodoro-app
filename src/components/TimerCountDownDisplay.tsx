@@ -20,5 +20,6 @@ const styles = StyleSheet.create({
   timerCounterText: {
     fontSize: 30,
     fontWeight: '700',
+    color: '#fff',
   },
 });
