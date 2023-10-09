@@ -17,7 +17,8 @@ export const TimerCountDownDisplay: FC<TimerCountDownDisplayProps> = ({
       width={8}
       fill={timerPercentage}
       rotation={360}
-      tintColor="#fff">
+      tintColor="#fff"
+      style={{ transform: [{ scaleX: -1 }] }}>
       {() => {
         return (
           <Text style={styles.timerCounterText}>
@@ -35,5 +36,6 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '700',
     color: '#fff',
+    transform: [{ scaleX: -1 }],
   },
 });

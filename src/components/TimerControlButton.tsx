@@ -22,7 +22,7 @@ export const TimerControlButton: FC<TimerControlButtonProps> = ({
       <View style={styles.container}>
         <FontAwesome
           name={iconName}
-          size={125}
+          size={50}
           color={'#fff'}
           style={styles.icon}
         />
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
   },
   container: {
     borderWidth: 5,
-    width: 250,
-    height: 250,
+    width: 100,
+    height: 100,
     borderRadius: 250 / 2,
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 import { TimerCountDownDisplay } from '../components/TimerCountDownDisplay';
 import { TimerControlButton } from '../components/TimerControlButton';
+import { TimerControlButtons } from '../components/TimerControlButtons';
 
-const focusTimeMin = 25 * 60 * 1000;
-const breakTimeMin = 5 * 60 * 1000;
+const focusTimeMin = 1 * 60 * 1000;
+const breakTimeMin = 1 * 60 * 1000;
 
 export const MainScreen = () => {
   const [timerCount, setTimerCount] = useState(focusTimeMin);
@@ -15,17 +16,6 @@ export const MainScreen = () => {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [timerMode, setTimerMode] = useState<'Focus' | 'Break'>('Focus');
 
-  useEffect(() => {
-    if (timerCount === 0) {
-      if (timerMode === 'Focus') {
-        setTimerMode('Break');
-        setTimerCount(breakTimeMin);
-      } else {
-        setTimerMode('Focus');
-        setTimerCount(focusTimeMin);
-      }
-    }
-  }, [timerCount]);
   const startTimer = () => {
     const interval = setInterval(() => {
       setTimerCount((prev) => prev - 1000);
@@ -60,6 +50,11 @@ export const MainScreen = () => {
         timerDate={timerDate}
         timerPercentage={timerPercentage}
       />
+      {/* <TimerControlButtons
+        isTimerRunning={isTimerRunning}
+        startTimer={startTimer}
+        stopTimer={stopTimer}
+      /> */}
       <TimerControlButton
         isTimerRunning={isTimerRunning}
         startTimer={startTimer}
@@ -72,7 +67,7 @@ export const MainScreen = () => {
 const styles = StyleSheet.create({
   containerOnFocus: {
     flex: 1,
-    backgroundColor: '#49A843',
+    backgroundColor: '#2A272A',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -81,5 +76,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#0066AF',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+    backgroundColor: 'red',
   },
 });
